@@ -37,6 +37,7 @@
       }
       
       // var_dump($sql);
+      // test
       
       // DBにSQL文の実行
       $stmt = $db->prepare($sql);
