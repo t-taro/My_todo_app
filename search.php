@@ -10,8 +10,7 @@
       
       if ($_GET['titleSearch']){
         $titleSql = 'title like :searchTitle';
-        // $titleSql = 'title = :searchTitle';
-        $titleSearch = "%".$_GET['titleSearch']."%";
+        $titleSearch = "%".$_GET['titleSearch']."%"; //%を付けてあいまい検索を可能にしている
         $executeArray[':searchTitle'] = $titleSearch;
       }else{
         $titleSql = '';
@@ -43,12 +42,40 @@
       $stmt->execute($executeArray);
       $searchResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
       
-      foreach($searchResult as $row){
-        echo $row['title'].PHP_EOL;
-      }
-
+      
       // header('Location: .');
     } catch (PDOException $e) {
-        echo $e->getMessage();
-        exit;
+      echo $e->getMessage();
+      exit;
     }
+?>
+    
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="search.css">
+  <script src="https://kit.fontawesome.com/ea3c053da1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+  <header>
+      <h1>Todos</h1>
+    </header>
+    
+    <section>
+      <p><?= "検索結果：".count($searchResult)."件".PHP_EOL; ?></p>
+      <ul>  
+        <?php foreach($searchResult as $row){ ?>
+          <li><?= $row['title'].PHP_EOL; ?></li>
+        <?php } ?>
+      </ul>
+    </section>
+    
+    <a href="/"><p>return to home</p></a>
+  </div>
+
+</body>
+</html>
