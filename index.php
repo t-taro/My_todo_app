@@ -41,6 +41,11 @@
     
     <section id="todo_list">
       <ul>
+        <li>
+          <p class="columnTitle">Todo title</p>
+          <p class="columnTitle">Created Date</p>
+          <p class="columnTitle">Updated Date</p>
+        </li>
         <?php foreach($result as $row){ ?>
             <li>
               <form action="check.php" method="post">
@@ -56,6 +61,18 @@
               </form>
               
               <p><?= h($row['title']) ?></p>
+              
+              <p><?php
+              $dsh = $db->query('select date_format(created_at, "%Y-%m-%d") as formatedCreatedDate from todos where id = '.$row['id']);
+              $createdDate = $dsh->fetch(PDO::FETCH_ASSOC);
+              echo $createdDate['formatedCreatedDate'];
+              ?></p>
+              
+              <p><?php
+              $dsh = $db->query('select date_format(updated_at, "%Y-%m-%d") as formatedUpdatedDate from todos where id = '.$row['id']);
+              $updatedDate = $dsh->fetch(PDO::FETCH_ASSOC);
+              echo $updatedDate['formatedUpdatedDate'];
+              ?></p>
               
               <form action="delete.php" method="post">
                 <input type="text" class="hidden" name="deleteTitleId" value="<?= $row['id'] ?>" readonly>
