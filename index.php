@@ -46,7 +46,7 @@
               <form action="check.php" method="post">
                 <!-- $_POSTに$row[id]を渡したいが、渡し方がわからない。。。 -->
                 <input type="checkbox" class="checkbox" name="newState[]" value="<?php
-                if ($row['STATE'] == 0){
+                if ($row['state'] == 0){
                   echo 0;
                 }else{
                   echo 1;

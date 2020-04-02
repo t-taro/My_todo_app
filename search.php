@@ -20,7 +20,7 @@
       $doneSql;
       
       if ($_GET['doneSearch'][0] == '1' || $_GET['doneSearch'][0] == '0' and !$_GET['doneSearch'][1]){
-        $doneSql = ' STATE = :searchState';
+        $doneSql = ' state = :searchState';
         $doneSearch = $_GET['doneSearch'][0];
         $executeArray[':searchState'] = (int)$doneSearch;
       }else{
