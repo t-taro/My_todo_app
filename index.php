@@ -34,6 +34,10 @@
     </div>
     
     <section id="add_todo">
+      <div id="add_todo_title">
+        <i class="far fa-calendar-check"></i>
+        <p>Add new todo</p>
+      </div>
       <form action="post.php" method="post">
         <input type="text" id="add_new_todo" name="newTitle" placeholder="input new todo">
         <input type="date" id="deadline" name="deadline">
@@ -44,10 +48,10 @@
     <section id="todo_list">
       <ul>
         <li id = "columnTitles">
-          <p class="columnTitle">Todo title</p>
-          <p class="columnTitle">Created Date</p>
-          <p class="columnTitle">Updated Date</p>
-          <p class="columnTitle">Deadline Date</p>
+          <p>Todo title</p>
+          <p>Created Date</p>
+          <p>Updated Date</p>
+          <p>Deadline Date</p>
         </li>
         <?php foreach($result as $row){ ?>
             <li>
