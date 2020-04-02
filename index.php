@@ -32,24 +32,26 @@
         <input type="submit" id="searchBtn" value="Search">
       </form>
     </div>
+    
     <section id="add_todo">
       <form action="post.php" method="post">
         <input type="text" id="add_new_todo" name="newTitle" placeholder="input new todo">
+        <input type="date" id="deadline" name="deadline">
         <input type="submit" value="Add to list">
       </form>
     </section>
     
     <section id="todo_list">
       <ul>
-        <li>
+        <li id = "columnTitles">
           <p class="columnTitle">Todo title</p>
           <p class="columnTitle">Created Date</p>
           <p class="columnTitle">Updated Date</p>
+          <p class="columnTitle">Deadline Date</p>
         </li>
         <?php foreach($result as $row){ ?>
             <li>
               <form action="check.php" method="post">
-                <!-- $_POSTに$row[id]を渡したいが、渡し方がわからない。。。 -->
                 <input type="checkbox" class="checkbox" name="newState[]" value="<?php
                 if ($row['state'] == 0){
                   echo 0;
@@ -72,6 +74,12 @@
               $dsh = $db->query('select date_format(updated_at, "%Y-%m-%d") as formatedUpdatedDate from todos where id = '.$row['id']);
               $updatedDate = $dsh->fetch(PDO::FETCH_ASSOC);
               echo $updatedDate['formatedUpdatedDate'];
+              ?></p>
+              
+              <p><?php
+              $dsh = $db->query('select date_format(deadline, "%Y-%m-%d") as formatedDeadlineDate from todos where id = '.$row['id']);
+              $deadlineDate = $dsh->fetch(PDO::FETCH_ASSOC);
+              echo $deadlineDate['formatedDeadlineDate'];
               ?></p>
               
               <form action="delete.php" method="post">

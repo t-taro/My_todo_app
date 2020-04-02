@@ -8,6 +8,10 @@ body{
   position: relative;
 }
 
+p,label{
+  user-select: none;
+}
+
 header{
   background-color: rgb(6, 6, 112);
   display: flex;
@@ -74,6 +78,19 @@ header h1{
   width: 240px;
 }
 
+#columnTitles>p:first-of-type{
+  margin-left: 21.75px;
+}
+
+#columnTitles>p:last-of-type{
+  margin-right: 21.56px;
+}
+
+.columnTitle{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 ul{
   margin: 0;
   padding: 0;
@@ -86,8 +103,8 @@ ul li{
 }
 
 li p{
-  width: 300px;
   margin-left: 4px;
+  flex:1;
 }
 
 .hidden{
