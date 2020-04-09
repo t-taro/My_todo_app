@@ -9,22 +9,17 @@ checkboxes.forEach(checkbox =>{
     checkbox.removeAttribute('checked', ''); 
   };
   
+  const clickCheckboxSubmit= () => {
+    checkbox.parentNode.lastElementChild.click();
+  }
+  
   checkbox.addEventListener('click', ()=>{
     if(checkbox.getAttribute('value') == 0){
-      checkbox.setAttribute('value', 1); 
-      // checkbox.setAttribute('checked', ''); 
-      
+      checkbox.setAttribute('value', 1);
+      clickCheckboxSubmit();    
     }else{
-      checkbox.setAttribute('value', 0); 
-      // checkbox.removeAttribute('checked', ''); 
+      checkbox.setAttribute('value', 0);
+      clickCheckboxSubmit(); 
     };
-    console.log(checkbox.getAttribute('value'));
-    
-    function clickCheckboxSubmit(){
-      checkbox.parentNode.lastElementChild.click();
-      console.log("submit is clicked!");
-    }
-    
-    setTimeout(clickCheckboxSubmit, 10);
   })
 })
