@@ -48,6 +48,7 @@
     <section id="todo_list">
       <ul>
         <li id = "columnTitles">
+          <p>Status</p>
           <p>Todo title</p>
           <p>Created Date</p>
           <p>Updated Date</p>
@@ -55,7 +56,8 @@
         </li>
         <?php foreach($result as $row){ ?>
             <li>
-              <form action="check.php" method="post">
+              
+              <!-- <form action="check.php" method="post">
                 <input type="checkbox" class="checkbox" name="newState[]" value="<?php
                 if ($row['state'] == 0){
                   echo 0;
@@ -64,7 +66,23 @@
                 }; ?>">
                 <input type="text" class="hidden" name="checkedId" value="<?= $row['id'] ?>" readonly>
                 <input type="submit" class="checkboxSubmit hidden" value= "">
-              </form>
+              </form> -->
+              
+              <p class="completeCheck <?php 
+                if ($row['state'] == 0){
+                  echo "notComplete";
+                } else {
+                  echo "completed";
+                }
+                ?>">
+                <?php 
+                if ($row['state'] == 0){
+                  echo "Not complete";
+                } else {
+                  echo "Completed";
+                }
+                ?>
+              </p>
               
               <p><?= h($row['title']) ?></p>
               
@@ -99,5 +117,6 @@
   </div>  
   <script src="checkbox.js"></script>
   <script src="searchUI.js"></script>  
+  <script src="status_btn_ajax.js"></script>  
 </body>
 </html>
