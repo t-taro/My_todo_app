@@ -98,7 +98,7 @@
               echo $updatedDate['formatedUpdatedDate'];
               ?></p>
               
-              <p><?php
+              <p class = "deadline"><?php
               $dsh = $db->query('select date_format(deadline, "%Y-%m-%d") as formatedDeadlineDate from todos where id = '.$row['id']);
               $deadlineDate = $dsh->fetch(PDO::FETCH_ASSOC);
               echo $deadlineDate['formatedDeadlineDate'];
@@ -118,5 +118,6 @@
   <script src="checkbox.js"></script>
   <script src="searchUI.js"></script>  
   <script src="status_btn_ajax.js"></script>  
+  <script src="deadline.js"></script>  
 </body>
 </html>

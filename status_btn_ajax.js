@@ -27,7 +27,7 @@ completeBtns.forEach(btn => {
               btn.classList.add('completed');
               btn.textContent = 'Completed';
               
-              console.log(this.response);
+              // console.log(this.response);
               
             } else {
               
@@ -35,7 +35,7 @@ completeBtns.forEach(btn => {
               btn.classList.add('notComplete');
               btn.textContent = 'Not complete';
               
-              console.log(this.response);
+              // console.log(this.response);
           };
           
           
